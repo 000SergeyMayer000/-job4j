@@ -16,21 +16,21 @@ public class CalculatorTest  {
     public void whenAddOneSubOneThenTwo() {
         Calculator calc = new Calculator();
         double result = calc.subtract(1D, 1D);
-        double expected = 10;
+        double expected = 0;
         assertThat(result, is(expected));
     }
     @Test
     public void whenAddDivPlusOneThenTwo()  {
         Calculator calc = new Calculator();
         double result = calc.div(20.0, 10.0);
-        double expected = 200.0;
+        double expected = 2.0;
         assertThat(result, is(expected));
     }
     @Test
     public void whenAddMultiplePlusOneThenTwo()  {
         Calculator calc = new Calculator();
         double result = calc.multiple(20.0, 10.0);
-        double expected = 2.0;
+        double expected = 200.0;
         assertThat(result, is(expected));
     }
 
