@@ -24,6 +24,10 @@ public class DummyBot {
         return rsl;
     }
 
+    /**
+     * метод main
+     * @param args
+     */
     public static void main(String[] args) {
         DummyBot ask = new DummyBot();
         String x = ask.answer("Привет, Бот.");
