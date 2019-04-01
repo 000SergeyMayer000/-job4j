@@ -9,8 +9,20 @@ public class MaxTest {
     @Test
     public void whenMax1To2Then2() {
         Max max = new Max();
-        int result = max.max(3, 2);
-        assertThat(result, is(3));
+        int result = max.max(2, 2);
+        assertThat(result, is(2));
+    }
+    @Test
+    public void whenMax5To1Then5() {
+        Max max = new Max();
+        int result = max.max(5, 1);
+        assertThat(result, is(5));
+    }
+    @Test
+    public void whenMax7To7Then7() {
+        Max max = new Max();
+        int result = max.max(7, 7);
+        assertThat(result, is(7));
     }
 }
 
