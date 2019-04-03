@@ -14,10 +14,11 @@ public class TriangleTest {
         // Создаем объект треугольник.
         Triangle triangle = new Triangle();
         // Вычисляем площадь.
-        double result = triangle.area(0, 9, 6, 0, 6, 9);
+        double result = triangle.area(0, 0,0 , 0, 0, 0);
         // Задаем ожидаемый результат.
-        double expected = 27;
+        double expected =-1;
         //Проверяем результат и ожидаемое значение.
         assertThat(result, closeTo(expected, 0.1));
     }
+
 }

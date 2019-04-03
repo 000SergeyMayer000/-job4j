@@ -1,5 +1,7 @@
 package ru.job4j.condition;
 
+import java.sql.SQLOutput;
+
 public class Triangle {
 
     /**
@@ -56,9 +58,16 @@ public class Triangle {
      */
     private boolean exist(double a, double c, double b) {
         if (a > 0 && b > 0 && c > 0) {
-            return true;
+            if ((a + b) >= c || (b + c) >= a || (c + a) >= b) {
+                return true;
+            }
         }
         return false;
     }
-
 }
+
+
+
+
+
+
