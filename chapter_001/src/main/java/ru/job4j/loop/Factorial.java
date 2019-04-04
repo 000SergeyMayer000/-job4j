@@ -7,6 +7,7 @@ public class Factorial {
         for (m = 1; m <= n; m++) {
             result = result * m;
         }
+
         return result;
     }
 }

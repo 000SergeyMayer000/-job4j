@@ -20,4 +20,5 @@ public class FactorialTest {
         int result = fact.calc(0);
         assertThat(result, is(1));
     }
+
 }
