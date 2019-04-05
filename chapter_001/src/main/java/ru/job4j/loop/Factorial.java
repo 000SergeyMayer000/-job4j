@@ -1,5 +1,9 @@
 package ru.job4j.loop;
-
+/**
+ * Класс Factorial вычисляет значение факториала от заданного числа.
+ *
+ * @author Sergey Mayer
+ */
 public class Factorial {
     public int calc(int n) {
         int result = 1;
