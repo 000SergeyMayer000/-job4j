@@ -1,5 +1,6 @@
 package ru.job4j.loop;
 
+import java.util.function.BiPredicate;
 /**
  * Класс Paint создает пирамиду в псевдографике
  * заданной высоты.
@@ -13,18 +14,18 @@ public class Paint {
      * @param height
      * @return
      */
-    public String piramid(int height) {
+    public String rightTrl(int height) {
         // Буфер для результата.
         StringBuilder screen = new StringBuilder();
         // ширина будет равна высоте.
-        int width = 2*height-1;
+        int widht = height;
         // внешний цикл двигается по строкам.
         for (int row = 0; row != height; row++) {
             // внутренний цикл определяет положение ячейки в строке.
-            for (int column = 0; column != width; column++) {
-                // если строка равна ячейке, то рисуем галку.
-                // в данном случае строка определяет, сколько галок будет в строке
-                if (row >= height - column - 1 && row + height - 1 >= column) {
+            for (int column = 0; column != widht; column++) {
+                // если строка равна ячейки, то рисуем галку.
+                // в данном случае строка определяем, сколько галок будет на строке
+                if (row >= column) {
                     screen.append("^");
                 } else {
                     screen.append(" ");
@@ -34,6 +35,38 @@ public class Paint {
             screen.append(System.lineSeparator());
         }
         // Получаем результат.
+        return screen.toString();
+    }
+
+    public String leftTrl(int height) {
+        StringBuilder screen = new StringBuilder();
+        int widht = height;
+        for (int row = 0; row != height; row++) {
+            for (int column = 0; column !=widht; column++) {
+                if (row >= widht - column - 1) {
+                    screen.append("^");
+                } else {
+                    screen.append(" ");
+                }
+            }
+            screen.append(System.lineSeparator());
+        }
+        return screen.toString();
+    }
+
+    public String pyramid(int height) {
+        StringBuilder screen = new StringBuilder();
+        int widht = 2 * height - 1;
+        for (int row = 0; row != height; row++) {
+            for (int column = 0; column != widht; column++) {
+                if (row >= height - column - 1 && row + height - 1 >= column) {
+                    screen.append("^");
+                } else {
+                    screen.append(" ");
+                }
+            }
+            screen.append(System.lineSeparator());
+        }
         return screen.toString();
     }
 }
