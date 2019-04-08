@@ -11,7 +11,7 @@ public class Square {
     public int[] calculate(int bound) {
         int[] rst = new int[bound];
         for (int num = 1; num <= bound; num++) {
-            rst[num - 1] = num * num;
+            rst[num - 1] =(int) Math.pow(num,2);
         }
         // заполнить массив через цикл элементами от 1 до bound возведенными в квадрат
         return rst;
