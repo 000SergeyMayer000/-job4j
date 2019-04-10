@@ -21,11 +21,11 @@ public class ArrayChar {
         char[] value = prefix.toCharArray();
         // проверить, что массив data имеет первые элементы, одинаковые с value
         for (int index = 0; index < value.length; index++) {
-            if (data[index] == value[index]) {
-                result = true;
-            } else {
+            if (data[index] != data[index + 1]) {
                 result = false;
+                break;
             }
+            result = true;
         }
         return result;
     }
