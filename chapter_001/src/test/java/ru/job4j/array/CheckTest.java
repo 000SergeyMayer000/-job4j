@@ -6,6 +6,15 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class CheckTest {
+
+    @Test
+    public void whenDataMonoEnd() {
+        Check check = new Check();
+        boolean[] input = new boolean[]{true, false, false};
+        boolean result = check.mono(input);
+        assertThat(result, is(false));
+    }
+
     @Test
     public void whenDataMonoByTrueThenTrue() {
         Check check = new Check();
@@ -29,10 +38,11 @@ public class CheckTest {
         boolean result = check.mono(input);
         assertThat(result, is(true));
     }
+
     @Test
     public void whenDataMonoByFalseFalseFalseTrueTrueFalse() {
         Check check = new Check();
-        boolean[] input = new boolean[]{false, false, false,true, true,false};
+        boolean[] input = new boolean[]{false, false, false, true, true, false};
         boolean result = check.mono(input);
         assertThat(result, is(false));
     }

@@ -1,7 +1,5 @@
 package ru.job4j.converter;
 
-import java.sql.SQLOutput;
-
 /**
  * Корвертор валюты.
  */

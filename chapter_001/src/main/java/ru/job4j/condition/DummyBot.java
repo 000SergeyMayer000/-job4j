@@ -1,7 +1,5 @@
 package ru.job4j.condition;
 
-import java.lang.reflect.AnnotatedArrayType;
-
 /**
  * *@author Sergey Mayer(samajor@mail.ru)
  * *@version $Id$
