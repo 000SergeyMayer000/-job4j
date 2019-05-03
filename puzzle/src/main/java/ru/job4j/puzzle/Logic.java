@@ -3,6 +3,8 @@ package ru.job4j.puzzle;
 import ru.job4j.puzzle.firuges.Cell;
 import ru.job4j.puzzle.firuges.Figure;
 
+import java.util.Arrays;
+
 /**
  * //TODO add comments.
  *
@@ -18,6 +20,11 @@ public class Logic {
     public Logic(int size) {
         this.size = size;
         this.figures = new Figure[size * size];
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(this.convert());
     }
 
     public void add(Figure figure) {
@@ -68,35 +75,28 @@ public class Logic {
 
     public boolean isWin() {
         int[][] table = this.convert();
-        boolean result = true;
-        for (int i = 0; i < table.length - 1; i++) { //ПРОВЕРКА ПО ВЕРТИКАЛИ
-            if (table[0][i] == 1) {                   // если в верхней строке значение ячейки равно 1
-                for (int j = 0; j < table.length - 1; j++) {//то проверяем остальные элементы этого столбца
-                    if (table[j][i] != table[j + 1][i]) {
-                        result = false;
-                        break;
-                    }else{
-                        result=true;
-                    }
+        boolean result = false;
+        int  countervertical = 0;
+        int counterhorizontal = 0;
+        for (int i = 0; i < table.length;i++) {
+            for (int j = 0; j < table.length; j++) {
+                if (table[i][j] == 1) {
+                    counterhorizontal++;
+                }
+                if (table[j][i] == 1) {
+                    countervertical++;
                 }
             }
-        }
-        if(!result) {
-            for (int j = 0; j < table.length - 1; j++) { // ПРОВЕРКА ПО ГОРИЗОНТАЛИ
-                if (table[j][0] == 1) {                   // если в первой ячейке левого столбца значение 1
-                    for (int i = 0; i < table.length - 1; i++) {//то проверяем остальные элементы этой строки
-                        if (table[j][i] != table[j][i + 1]) {
-                            result = false;
-                            break;
-                        } else {
-                            result = true;
-                        }
-                    }
-                }
+            if (countervertical == table.length || counterhorizontal == table.length) {
+                result = true;
+                break;
+            }else{
+                countervertical=counterhorizontal=0;
             }
         }
         return result;
     }
+
 
 
     public int[][] convert() {
