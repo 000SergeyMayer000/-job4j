@@ -22,10 +22,7 @@ public class Logic {
         this.figures = new Figure[size * size];
     }
 
-    @Override
-    public String toString() {
-        return Arrays.toString(this.convert());
-    }
+
 
     public void add(Figure figure) {
         this.figures[this.index++] = figure;
@@ -95,6 +92,7 @@ public class Logic {
             }
         }
         return result;
+
     }
 
 
