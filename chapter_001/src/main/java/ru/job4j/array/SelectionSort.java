@@ -6,11 +6,9 @@ import java.util.Arrays;
  * класс SelectionSort - Реализация алгоритма Сортировка выбором
  */
 
-import java.util.Arrays;
-
 class SelectionSort {
     public static void main(String[] args) {
-        int[] arr = {5, 1, 9, 11, 55, 10, 47, 2, 3, 85, 49, 3};
+        int[] arr = {3,1,2};
         for (int i = 0; i < arr.length; i++) {
         /*Предполагаем, что первый элемент (в каждом
            подмножестве элементов) является минимальным */
