@@ -1,7 +1,7 @@
 package msa;
 
 public class MinSearch {
-    public int min(int[] arr) {
+    public int minarray(int[] arr) {
         int minvalue = 0;
         for (int i = 0; i < arr.length; i++) {
             if (minvalue > arr[i]) {
@@ -14,8 +14,7 @@ public class MinSearch {
     public static void main(String[] args) {
         MinSearch minSearch = new MinSearch();
         int[] arr = new int[]{12, 9, 8, 7, 16, 10, 6, 5, 15, 17, 4, 14, 11, -12, 3, 2, 1, 0, 13};
-        int min = minSearch.min(arr);
+        int min = minSearch.minarray(arr);
         System.out.println(min);
     }
-
 }
