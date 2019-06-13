@@ -1,8 +1,6 @@
-package msa.lesson15;
+package ru.job4j.array;
 
-import java.util.Arrays;
 public class Array {
-
     public int indexOfMin(int start, int finish, int[] arr) {
         int min = arr[0];
         int indmin = 0;
@@ -24,4 +22,3 @@ public class Array {
 
     }
 }
-

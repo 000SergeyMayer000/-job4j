@@ -25,6 +25,6 @@ class SortingArray {
         }
         System.out.println(Arrays.toString(array));
         MinSearch minSearch=new MinSearch();
-        System.out.println("Минимальное значение ="+minSearch.minarray(array));
+      //  System.out.println("Минимальное значение ="+minSearch.minarray(array));
     }
 }
