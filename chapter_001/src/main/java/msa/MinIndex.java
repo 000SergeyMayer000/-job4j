@@ -42,6 +42,5 @@ public class MinIndex {
         int[] arr = {7, 5, 9, 4, 2, -55, 79, -9, -23, 0, 5};
         System.out.println("Индекс минимального элемента = " + minIndex.indexOfMin(1, 9, arr));
         System.out.println("Измененный массив: " + Arrays.toString(minIndex.swap(7, -55, arr)));
-
     }
 }
