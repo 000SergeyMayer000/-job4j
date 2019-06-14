@@ -9,7 +9,7 @@ public class MinIndex {
      */
     public int indexOfMin(int start, int finish, int[] arr) {
         int mininx = 0;
-        for (int index = start; index < finish; index++) {
+        for (int index = start; index != finish+1; index++) {
             if (arr[mininx] > arr[index]) {
                 mininx = index;
             }
@@ -18,29 +18,20 @@ public class MinIndex {
     }
 
     /**
-     * метод меняет местами указанные элементы массива.
+     * метод меняет местами указанные элементы массива.(индексы)
      */
     public int[] swap(int fromInx, int toInx, int[] arr) {
-        int tmp = 0;
-        int indtmp = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == fromInx) {
-                tmp = arr[i];
-                indtmp = i;
-            }
-            if (arr[i] == toInx) {
-                arr[indtmp] = arr[i];
-                arr[i] = tmp;
-                break;
-            }
-        }
+       int tmp;
+        tmp = arr[fromInx];
+        arr[fromInx]=arr[toInx];
+        arr[toInx]=tmp;
         return arr;
     }
 
     public static void main(String[] args) {
         MinIndex minIndex = new MinIndex();
-        int[] arr = {7, 5, 9, 4, 2, -55, 79, -9, -23, 0, 5};
-        System.out.println("Индекс минимального элемента = " + minIndex.indexOfMin(1, 9, arr));
-        System.out.println("Измененный массив: " + Arrays.toString(minIndex.swap(7, -55, arr)));
+        int[] arr = {4,3,2,1};
+        System.out.println("Индекс минимального элемента = " + minIndex.indexOfMin(0, 3, arr));
+       System.out.println("Измененный массив: " + Arrays.toString(minIndex.swap(3, 0, arr)));
     }
 }
