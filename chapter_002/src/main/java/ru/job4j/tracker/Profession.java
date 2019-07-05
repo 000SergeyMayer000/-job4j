@@ -1,27 +1,45 @@
 package ru.job4j.tracker;
 
 public class Profession {
-    String name;
-    int level;
-    int experience;
-    double salary;
+    private String name;
+    private String surname;
+    private String education;
+    private long birthday;
 
-
-    public static void main(String[] args) {
-       Profession painter=new Profession();
-       painter.name="Ivan";
-       painter.level=5;
-       painter.experience=12;
-       painter.salary=25000.0;
-
-       Profession doctor=new Profession();
-        doctor.name="Anna";
-        doctor.level=5;
-        doctor.experience=15;
-        doctor.salary=50000.0;
-
-        }
+    public void setName(String name) {
+        this.name = name;
     }
+    public String getName() {
+        return name;
+    }
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public long getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(long birthday) {
+        this.birthday = birthday;
+    }
+
+}
+
+
+
 
 
 
