@@ -45,14 +45,13 @@ public class Tracker {
     }
 
     public Item[] findByName(String key) {
+        Item[] result = new Item[this.position];
         Item item = null;
-        Item[] result = null;
-        int number=position;
+        int number = 0;
         for (int i = 0; i < position; i++) {
-            if (item.getName() != null && item.getName().equals(key)) {
-                result[i] = item;
-                i++;
-                number--;
+            if (item.getName().equals(key)) {
+                result[number] = item;
+                number++;
             }
         }
         return Arrays.copyOf(result, number);
@@ -60,15 +59,15 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        Item item=null;
+        Item item = null;
         Item result = null;
         for (int i = 0; i < position; i++) {
-            if (item != null && item.getId().equals(id)) {
+            if (item.getId().equals(id)) {
                 result = item;
                 break;
             }
         }
-        return  result;
+        return result;
     }
 
     public String generateId() {
