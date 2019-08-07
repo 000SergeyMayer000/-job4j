@@ -28,8 +28,8 @@ public class Tracker {
 
     public boolean delete(String id) {
         boolean result = false;
-        Item item = null;
         for (int i = 0; i < position; i++) {
+            Item item = items[i];
             if (item != null && item.getId().equals(id)) {
                 System.arraycopy(items, i + 1, items, i, items.length - i - 1);
                 result = true;
@@ -46,22 +46,21 @@ public class Tracker {
 
     public Item[] findByName(String key) {
         Item[] result = new Item[this.position];
-        Item item = null;
         int number = 0;
         for (int i = 0; i < position; i++) {
+            Item item = items[i];
             if (item.getName().equals(key)) {
                 result[number] = item;
                 number++;
             }
         }
         return Arrays.copyOf(result, number);
-
     }
 
     public Item findById(String id) {
-        Item item = null;
         Item result = null;
         for (int i = 0; i < position; i++) {
+            Item item = items[i];
             if (item.getId().equals(id)) {
                 result = item;
                 break;
