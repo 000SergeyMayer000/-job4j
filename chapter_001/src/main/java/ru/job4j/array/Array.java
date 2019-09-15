@@ -1,5 +1,8 @@
 package ru.job4j.array;
 
+/**
+ *
+ */
 public class Array {
     public int indexOfMin(int start, int finish, int[] arr) {
         int min = arr[0];
@@ -19,6 +22,5 @@ public class Array {
             }
         }
         return indmin;
-
     }
 }

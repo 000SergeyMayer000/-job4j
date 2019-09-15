@@ -8,7 +8,7 @@ public class MinIndex {
      * метод мозращает индекс минимального значения массива в заданном диапазоне
      */
     public int indexOfMin(int start, int finish, int[] arr) {
-        int mininx = 0;
+        int mininx = start;
         for (int index = start; index != finish+1; index++) {
             if (arr[mininx] > arr[index]) {
                 mininx = index;

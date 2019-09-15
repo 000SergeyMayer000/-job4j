@@ -2,8 +2,8 @@ package msa;
 
 public class BearLimak {
     public static void main(String[] args) {
-        int a = 4; // Вес Лима
-        int b = 7;// Вес Боб
+        int a = 3; // Вес Лима
+        int b = 7;// Вес Боба
         int let = 0;
         while (a <= b) {
             let++;
