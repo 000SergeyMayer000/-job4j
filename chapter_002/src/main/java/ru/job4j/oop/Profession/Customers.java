@@ -1,4 +1,4 @@
-package ru.job4j.tracker.Profession;
+package ru.job4j.oop.Profession;
 
 public class Customers extends Engineer {
     private String custemersName;

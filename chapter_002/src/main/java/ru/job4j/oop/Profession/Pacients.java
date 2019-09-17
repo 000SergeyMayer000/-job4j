@@ -1,4 +1,4 @@
-package ru.job4j.tracker.Profession;
+package ru.job4j.oop.Profession;
 
 public class Pacients extends Doctor{
     private String pacientName;

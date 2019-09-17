@@ -83,11 +83,11 @@ public class StartUI {
         long time = System.currentTimeMillis();
         Item itemnew = new Item(name, desc, time);
         item = itemnew;
-//        if (this.tracker.replace(id, item)) {
-//            System.out.println("----------Заявка с ID:" + id + " изменена");
-//        } else {
-//            System.out.println("----------Заявка с ID:" + id + " не найдена");
-//        }
+        if (this.tracker.replace(id, item)) {
+            System.out.println("----------Заявка с ID:" + id + " изменена");
+        } else {
+            System.out.println("----------Заявка с ID:" + id + " не найдена");
+        }
     }
 
     private void deleteItem() {
