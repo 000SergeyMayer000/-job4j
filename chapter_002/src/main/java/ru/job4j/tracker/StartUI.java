@@ -1,102 +1,136 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
 
 public class StartUI {
+    private static final String ADD = "0";
+    private static final String SHOWALL = "1";
+    private static final String EDIT = "2";
+    private static final String DELETE = "3";
+    private static final String FINFBYID = "4";
+    private static final String FINDBYNAME = "5";
+    private static final String EXIT = "6";
 
-    public void init(Scanner scanner, Tracker tracker) {
-        boolean run = true;
-        while (run) {
+    private final Input input;
+    private final Tracker tracker;
+
+    public StartUI(Input input, Tracker tracker) {
+        this.input = input;
+        this.tracker = tracker;
+    }
+
+    public void init() {
+        boolean exit = false;
+        while (!exit) {
             this.showMenu();
-            System.out.print("Select: ");
-            int select = Integer.valueOf(scanner.nextLine());
-            if (select == 0) {
-                System.out.println("=== Create a new Item ====");
-                System.out.print("Enter name: ");
-                String name = scanner.nextLine();
-                System.out.println("Enter description: ");
-                String desc = scanner.nextLine();
-                long time = System.currentTimeMillis();
-                Item item = new Item(name, desc, time);
-                tracker.add(item);
-            } else if (select == 1) {
-                Item[] ai = tracker.findAll();
-                for (Item item : ai) {
-                    System.out.println("------------Заявка с именем " + item.getName());
-                    System.out.println("------------ID заявки: " + item.getId());
-                    System.out.println("------------Дата создания: " + item.getTime());
-                    System.out.println("------------Описание: " + item.getDecs());
-                    System.out.println();
-                }
-            } else if (select == 2) {
-                System.out.println("------------Введите ID заявки, которую хотите изменить : ");
-                String id = scanner.nextLine();
-                System.out.println("------------ Изменений заявки --------------");
-                System.out.println("Введите новое имя заявки :");
-                String name = scanner.nextLine();
-                System.out.println("Введите новое описание заявки :");
-                String desc = scanner.nextLine();
-                long time = System.currentTimeMillis();
-                Item itemnew = new Item(name, desc, time);
-                if (tracker.replace(id, itemnew)) {
-                    System.out.println("----------Заявка с ID:" + id + " изменена");
-                } else {
-                    System.out.println("----------Заявка с ID:" + id + " не найдена");
-                }
-            } else if (select == 3) {
-                System.out.println("------------Введите ID заявки, которую хотите удалить : ");
-                String id = scanner.nextLine();
-                if (tracker.delete(id)) {
-                    System.out.println("----------Заявка с ID:" + id + " удалена");
-                } else {
-                    System.out.println("----------Заявка с ID:" + id + " не найдена");
-                }
-            } else if (select == 4) {
-                System.out.println("------------Введите ID заявки: ");
-                String id = scanner.nextLine();
-                Item item = tracker.findById(id);
-                System.out.println("------------Заявка с именем " + item.getName());
-                System.out.println("------------ID заявки: " + item.getId());
-                System.out.println("------------Дата создания: " + item.getTime());
-                System.out.println("------------Описание: " + item.getDecs());
-                System.out.println();
-            } else if (select == 5) {
-
-                System.out.println("------------Введите имя заявки: ");
-                String name = scanner.nextLine();
-                Item[] item = tracker.findByName(name);
-                System.out.println("------------Найдено " + item.length + " заявок c таким именем:");
-                int count = 1;
-                for (Item item1 : item) {
-                    System.out.println("------------#" + count + " заявка с именем " + item1.getName());
-                    System.out.println("------------ID заявки: " + item1.getId());
-                    System.out.println("------------Дата создания: " + item1.getTime());
-                    System.out.println("------------Описание: " + item1.getDecs());
-                    count++;
-                    System.out.println();
-                }
-            } else if (select == 6) {
-                run = false;
+            String answer = this.input.askStr("Введите пункт меню : ");
+            if (ADD.equals(answer)) {
+                this.createItem();
+            } else if (SHOWALL.equals(answer)) {
+                this.allItemsshow();
+            } else if (EDIT.equals(answer)) {
+                this.editItem();
+            } else if (DELETE.equals(answer)) {
+                this.deleteItem();
+            } else if (FINFBYID.equals(answer)) {
+                this.findID();
+            } else if (FINDBYNAME.equals(answer)) {
+                this.findName();
+            } else if (EXIT.equals(answer)) {
+                exit = true;
             }
         }
     }
 
     private void showMenu() {
-        System.out.println("Menu.");
-        System.out.println("0. Add new Item");
-        System.out.println("1. Show all items");
-        System.out.println("2. Edit item");
-        System.out.println("3. Delete item");
-        System.out.println("4. Find item by Id");
-        System.out.println("5. Find items by name");
-        System.out.println("6. Exit Program");
+        System.out.println("------------Меню------------.");
+        System.out.println("Добавить заявку - 0");
+        System.out.println("Показать все заявки - 1");
+        System.out.println("Редактировать заявку - 2");
+        System.out.println("Удалить заявку - 3");
+        System.out.println("Поиск по ID - 4");
+        System.out.println("Поиск по имени - 5");
+        System.out.println("Выход из прогроаммы - 6");
+    }
+
+    private void createItem() {
+        System.out.println("------------ Добавление новой заявки --------------");
+        String name = this.input.askStr("Введите имя заявки :");
+        String desc = this.input.askStr("Введите описание заявки :");
+        long time = System.currentTimeMillis();
+        Item item = new Item(name, desc, time);
+        this.tracker.add(item);
+        System.out.println("------------ Новая заявка с Id : " + item.getId() + "-----------");
+    }
+
+    private void allItemsshow() {
+        Item[] ai = this.tracker.findAll();
+        for (Item item : ai) {
+            System.out.println("------------Заявка с именем " + item.getName());
+            System.out.println("------------ID заявки: " + item.getId());
+            System.out.println("------------Дата создания: " + item.getTime());
+            System.out.println("------------Описание: " + item.getDecs());
+            System.out.println();
+        }
+    }
+
+    private void editItem() {
+        String id = this.input.askStr("------------Введите ID заявки, которую хотите изменить : ");
+        Item item = this.tracker.findById(id);
+        System.out.println("------------ Изменений заявки --------------");
+        String name = this.input.askStr("Введите новое имя заявки :");
+        String desc = this.input.askStr("Введите новое описание заявки :");
+        long time = System.currentTimeMillis();
+        Item itemnew = new Item(name, desc, time);
+        item = itemnew;
+        if (this.tracker.replace(id, item)) {
+            System.out.println("----------Заявка с ID:" + id + " изменена");
+        } else {
+            System.out.println("----------Заявка с ID:" + id + " не найдена");
+        }
+    }
+
+    private void deleteItem() {
+        String id = this.input.askStr("------------Введите ID заявки, которую хотите удалить : ");
+        if (this.tracker.delete(id)) {
+            System.out.println("----------Заявка с ID:" + id + " удалена");
+        } else {
+            System.out.println("----------Заявка с ID:" + id + " не найдена");
+        }
     }
 
 
+    private void findID() {
+        String id = this.input.askStr("------------Введите ID заявки: ");
+        Item item = this.tracker.findById(id);
+        System.out.println("------------Заявка с именем " + item.getName());
+        System.out.println("------------ID заявки: " + item.getId());
+        System.out.println("------------Дата создания: " + item.getTime());
+        System.out.println("------------Описание: " + item.getDecs());
+        System.out.println();
+    }
+
+    private void findName() {
+        Item[] ai = this.tracker.findAll();
+        String name = this.input.askStr("------------Введите имя заявки: ");
+        Item[] item = this.tracker.findByName(name);
+        System.out.println("------------Найдено " + item.length + " заявок c таким именем:");
+        int count = 1;
+        for (Item item1 : item) {
+
+            System.out.println("------------#" + count + " заявка с именем " + item1.getName());
+            System.out.println("------------ID заявки: " + item1.getId());
+            System.out.println("------------Дата создания: " + item1.getTime());
+            System.out.println("------------Описание: " + item1.getDecs());
+            count++;
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Tracker tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+        new StartUI(new ConsoleInput(), new Tracker()).init();
     }
 
 }
+
+
+
