@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -30,7 +31,18 @@ public class TrackerTest {
         // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
-//    @Test
-//    public void whenDeleteItem() {
-//    }
+
+    @Test
+    public void whenDeleteItem() {
+        Tracker tracker = new Tracker();
+        int positionstart = tracker.position;//состояние счетчика в момент когда заявок нет(position=0)
+        System.out.println(tracker.position);
+        Item item1 = new Item("name1", "decs1", 54321L);
+        tracker.add(item1);
+        System.out.println(tracker.position);
+        int position1 = tracker.position;// position=1
+        tracker.delete(item1.getId());
+        System.out.println(tracker.position);
+        assertThat(tracker.position, is(0));//после удаления заявки счетчик снова обнулится.
+    }
 }
