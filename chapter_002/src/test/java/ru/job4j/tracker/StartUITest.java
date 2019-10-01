@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -16,17 +17,28 @@ public class StartUITest {
         Item expected = new Item("First name", "Fist description", 12345L);
         assertThat(created, is(expected));//  метод equals в классе Item переопределен.
     }
+
     @Test
-public void whenEditItem(){
+    public void whenEditItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("new item","new decs",12345L);
+        Item item = new Item("new name", "new decs", 12345L);
         tracker.add(item);
-        String[] answers = {
-                item.getId(), // id сохраненной заявки в объект tracker.
-                "replaced item"
-        };
+        String[] answers = {item.getId(), "replaced name", "replaced decs"};
         StartUI111.editItem(new StubInput(answers), tracker);
         Item replaced = tracker.findById(item.getId());
-        assertThat(replaced.getName(), is("new item"));
+        assertThat(replaced.getName(), is("replaced name"));
+    }
+
+    @Test
+    public void whenDeleteItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new name", "new decs", 12345L);
+        tracker.add(item);
+        String[] answers = {item.getId()};
+        StartUI111.delete(new StubInput(answers), tracker);
+        assertThat(tracker.findById(item.getId()), is(nullValue()));
+
+
+
     }
 }
