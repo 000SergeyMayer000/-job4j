@@ -9,9 +9,11 @@ public class Profession {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
+
     public String getSurname() {
         return surname;
     }

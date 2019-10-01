@@ -1,8 +1,8 @@
 package ru.job4j.oop.Profession;
 
-public class Pacients extends Doctor{
+public class Pacients extends Doctor {
     private String pacientName;
-   private String diagnose;
+    private String diagnose;
 
     public String getPacientName() {
         return pacientName;

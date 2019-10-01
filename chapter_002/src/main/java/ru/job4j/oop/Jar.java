@@ -6,11 +6,12 @@ public class Jar {
     public Jar(int size) {
         this.value = size;
     }
+
     public void pour(Jar another) {
         System.out.println(this.value);
         this.value = this.value + another.value;
         System.out.println(this.value);
-       another.value =0;
+        another.value = 0;
     }
 
 

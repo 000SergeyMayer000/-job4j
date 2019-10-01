@@ -11,7 +11,7 @@ public class Converter {
      * @param value рубли.
      * @return Евро.
      */
-    public double rubleToEuro(double value) {
+    public static double rubleToEuro(double value) {
         return (double) value / 70;
     }
 
@@ -22,22 +22,24 @@ public class Converter {
      * @return Доллары
      */
 
-    public double rubleToDollar(double value) {
+    public static double rubleToDollar(double value) {
         return (double) value / 60;
     }
 
     /**
      * онвертируем евро в рубли.
+     *
      * @param value евро
      * @return рубли
      */
 
-    public double evroToRubli(double value) {
+    public static double evroToRubli(double value) {
         return (double) value * 70;
     }
 
     /**
      * Конвертируем доллары в рубли.
+     *
      * @param value доллары
      * @return рубли
      */
@@ -51,16 +53,22 @@ public class Converter {
      *
      * @param args args
      */
+//    public static void main(String[] args) {
+//        Converter cur = new Converter();
+//        double dollar = cur.rubleToDollar(120);
+//        System.out.println(dollar);
+//        double evro = cur.rubleToEuro(140);
+//        System.out.println(evro);
+//        double rubfromdollar = cur.rubleToDollar(600);
+//        System.out.println(rubfromdollar);
+//        double rubfromevro = cur.rubleToEuro(1400);
+//        System.out.println(rubfromevro);
+  //  }
     public static void main(String[] args) {
-        Converter cur = new Converter();
-        double dollar = cur.rubleToDollar(120);
-        System.out.println(dollar);
-        double evro = cur.rubleToEuro(140);
-        System.out.println(evro);
-        double rubfromdollar = cur.rubleToDollar(600);
-        System.out.println(rubfromdollar);
-        double rubfromevro = cur.rubleToEuro(1400);
-        System.out.println(rubfromevro);
+        double in = 140;
+        double expected = 2;
+        double out = rubleToEuro(in);
+        boolean passed = expected == out;
+        System.out.println("140 rubles are 2. Test result : " + passed);
     }
-
 }

@@ -52,7 +52,7 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return// time == item.time &&
+        return time == item.time &&
               //  Objects.equals(id, item.id) &&
                 Objects.equals(name, item.name) &&
                 Objects.equals(decs, item.decs);

@@ -6,7 +6,7 @@ public class StartUI {
     private static final String SHOWALL = "1";
     private static final String EDIT = "2";
     private static final String DELETE = "3";
-    private static final String FINFBYID = "4";
+    private static final String FINDBYID = "4";
     private static final String FINDBYNAME = "5";
     private static final String EXIT = "6";
 
@@ -31,7 +31,7 @@ public class StartUI {
                 this.editItem();
             } else if (DELETE.equals(answer)) {
                 this.deleteItem();
-            } else if (FINFBYID.equals(answer)) {
+            } else if (FINDBYID.equals(answer)) {
                 this.findID();
             } else if (FINDBYNAME.equals(answer)) {
                 this.findName();

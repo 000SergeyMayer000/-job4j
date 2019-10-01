@@ -4,12 +4,12 @@ public class Cat {
     private String food;
     private String name;
 
-    public  void  givNick(String nick){
-        this.name=nick;
+    public void givNick(String nick) {
+        this.name = nick;
     }
 
     public void show() {
-        System.out.println(this.name +" eat " +this.food);
+        System.out.println(this.name + " eat " + this.food);
     }
 
     public void eat(String meat) {

@@ -1,6 +1,6 @@
 package ru.job4j.oop.Profession;
 
-public class Builder extends Engineer{
+public class Builder extends Engineer {
     private String nameObjekt;
 
     public String getNameObjekt() {
@@ -11,7 +11,7 @@ public class Builder extends Engineer{
         this.nameObjekt = nameObjekt;
     }
 
-    private String nameProdjekt(Customers customers){
+    private String nameProdjekt(Customers customers) {
         return nameObjekt;
     }
 

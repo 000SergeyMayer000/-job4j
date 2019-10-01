@@ -1,8 +1,8 @@
 package ru.job4j.oop;
 
 public class DummyDic {
-    public String engToRus(String eng){
-      String str=("Не известное слово" +eng);
-      return str;
+    public String engToRus(String eng) {
+        String str = ("Не известное слово" + eng);
+        return str;
     }
 }

@@ -16,8 +16,8 @@ public class Battery {
     public static void main(String[] args) {
         Battery powerBank = new Battery(90);
         Battery smartfone = new Battery(10);
-        System.out.println("Сейчас смартфон заряжен на " + smartfone.load + "%, PowerBank заряжен на " + powerBank.load+"%");
+        System.out.println("Сейчас смартфон заряжен на " + smartfone.load + "%, PowerBank заряжен на " + powerBank.load + "%");
         smartfone.exchenge(powerBank);
-        System.out.println("Сейчас смартфон заряжен на " + smartfone.load + "%, PowerBank заряжен на " + powerBank.load +"%");
+        System.out.println("Сейчас смартфон заряжен на " + smartfone.load + "%, PowerBank заряжен на " + powerBank.load + "%");
     }
 }
