@@ -7,35 +7,14 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
-    @Test
-    public void whenAddItem() {
-        String[] answers = {"First name", "Fist description", "12345"};
-        Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
-        StartUI111.creatItem(input, tracker);
-        Item created = tracker.findAll()[0];
-        Item expected = new Item("First name", "Fist description", 12345L);
-        assertThat(created, is(expected));//  метод equals в классе Item переопределен.
-    }
 
     @Test
-    public void whenEditItem() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("new name", "new decs", 12345L);
-        tracker.add(item);
-        String[] answers = {item.getId(), "replaced name", "replaced decs"};
-        StartUI111.editItem(new StubInput(answers), tracker);
-        Item replaced = tracker.findById(item.getId());
-        assertThat(replaced.getName(), is("replaced name"));
-    }
-
-    @Test
-    public void whenDeleteItem() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("new name", "new decs", 12345L);
-        tracker.add(item);
-        String[] answers = {item.getId()};
-        StartUI111.delete(new StubInput(answers), tracker);
-        assertThat(tracker.findById(item.getId()), is(nullValue()));
+    public void whenExit() {
+        StubInput input = new StubInput(
+                new String[]{"0"}
+        );
+        StubAction action = new StubAction();
+        new StartUI111().init(input, new Tracker(), new UserAction[]{action});
+        assertThat(action.isCall(), is(true));
     }
 }
