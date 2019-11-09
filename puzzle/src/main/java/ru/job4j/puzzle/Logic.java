@@ -23,7 +23,6 @@ public class Logic {
     }
 
 
-
     public void add(Figure figure) {
         this.figures[this.index++] = figure;
     }
@@ -73,9 +72,9 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        int  countervertical = 0;
+        int countervertical = 0;
         int counterhorizontal = 0;
-        for (int i = 0; i < table.length;i++) {
+        for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table.length; j++) {
                 if (table[i][j] == 1) {
                     counterhorizontal++;
@@ -87,14 +86,14 @@ public class Logic {
             if (countervertical == table.length || counterhorizontal == table.length) {
                 result = true;
                 break;
-            }else{
-                countervertical=counterhorizontal=0;
+            } else {
+                counterhorizontal = 0;
+                countervertical = counterhorizontal;
             }
         }
         return result;
 
     }
-
 
 
     public int[][] convert() {
