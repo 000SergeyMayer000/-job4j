@@ -24,4 +24,5 @@ public class ConsoleInput implements Input {
         }
         return select;
     }
+
 }
