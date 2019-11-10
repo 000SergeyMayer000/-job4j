@@ -2,17 +2,32 @@ package ru.job4j.tracker;
 
 import java.util.*;
 
+/**
+ * класс Tracker является хранилищем заявок и содержит методы и поля, необходимые для работы с заявками
+ */
+
 public class Tracker {
-    private Item[] items = new Item[100];
-    private int position = 0;
+    public Item[] items = new Item[100];
+    public int position = 0;
     private static final Random RN = new Random();
 
+    /**
+     * метод add добовляет заявку
+     * @param item - заявка
+     * @return - заявка
+     */
     public Item add(Item item) {
         item.setId(generateId());
         this.items[position++] = item;
         return item;
     }
 
+    /**
+     * метод
+     * @param id
+     * @param item
+     * @return
+     */
     public boolean replace(String id, Item item) {
         boolean result = false;
         for (int i = 0; i < position; i++) {

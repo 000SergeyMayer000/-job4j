@@ -14,9 +14,9 @@ class StubAction implements UserAction {
 
         call = true;
         return false;
-
     }
-    public boolean isCall(){
+
+    public boolean isCall() {
         return call;
     }
 }
