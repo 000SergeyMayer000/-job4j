@@ -57,6 +57,7 @@ public class StartUITest {
                 .add("ID заявки: " + item.getId())
                 .add("Дата создания: " + item.getTime())
                 .add("Описание: " + item.getDecs());
+        expect.toString();
         assertThat(new String(out.toByteArray()), is(expect.toString()));
         System.setOut(def);
     }

@@ -1,4 +1,4 @@
-package ru.job4j.oop.Profession;
+package ru.job4j.oop.profession;
 
 public class Doctor extends Profession {
     private String certificate;
@@ -11,7 +11,7 @@ public class Doctor extends Profession {
         this.certificate = certificate;
     }
 
-    public String Diagnoseheal(Pacients pacient) {
+    public String diagnoseheal(Pacients pacient) {
         Pacients pacients = new Pacients();
         return pacients.getDiagnose();
     }

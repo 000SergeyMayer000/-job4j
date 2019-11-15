@@ -8,8 +8,8 @@ public class SortingSelection {
     public int[] sorting(int[] arr) {
         MinIndex minIndex = new MinIndex();
         for (int i = 0; i < arr.length; i++) {
-            int a = minIndex.indexOfMin(i, arr.length - 1, arr);// индекс мин элемента от i до конца массива
-            minIndex.swap(i, a, arr);// перестановка местами
+            int a = minIndex.indexOfMin(i, arr.length - 1, arr); // индекс мин элемента от i до конца массива
+            minIndex.swap(i, a, arr); // перестановка местами
         }
         return arr;
     }

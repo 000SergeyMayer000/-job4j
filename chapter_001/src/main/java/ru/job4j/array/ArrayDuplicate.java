@@ -1,13 +1,13 @@
 package ru.job4j.array;
 
 import java.util.Arrays;
+
 /**
  * класс ArrayDuplicate дубликат из массива.
  */
 
 public class ArrayDuplicate {
     /**
-     *
      * @param array входной массив.
      * @return массив без дублей.
      */
@@ -21,6 +21,6 @@ public class ArrayDuplicate {
                 }
             }
         }
-        return Arrays.copyOf(array,unique);
+        return Arrays.copyOf(array, unique);
     }
 }

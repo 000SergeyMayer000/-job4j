@@ -3,9 +3,10 @@ package ru.job4j.pojo;
 public class Book {
     String name;
     int pages;
-    public Book(String name, int pages){
-        this.name=name;
-        this.pages=pages;
+
+    public Book(String name, int pages) {
+        this.name = name;
+        this.pages = pages;
     }
 
     public String getName() {

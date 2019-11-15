@@ -18,7 +18,7 @@ public class Library {
             System.out.println(myBook.name + " - " + myBook.pages);
         }
 
-                System.out.println();
+        System.out.println();
         Book tmp = new Book("", 0);
         tmp = myBookshelf[0];
         myBookshelf[0] = myBookshelf[3];
@@ -30,8 +30,8 @@ public class Library {
 
         System.out.println();
         for (Book book : myBookshelf) {
-            if (book.name.equals("Clean code")){
-                System.out.println(book.name+" - "+book.pages);
+            if (book.name.equals("Clean code")) {
+                System.out.println(book.name + " - " + book.pages);
             }
         }
     }

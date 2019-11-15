@@ -1,4 +1,4 @@
-package ru.job4j.oop.Profession;
+package ru.job4j.oop.profession;
 
 public class Programmer extends Engineer {
     private String nameProgram;
@@ -11,7 +11,7 @@ public class Programmer extends Engineer {
         this.nameProgram = program;
     }
 
-    public String ProgramName(Customers customer) {
+    public String programName(Customers customer) {
 
         return getProgram();
     }

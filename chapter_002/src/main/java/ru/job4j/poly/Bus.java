@@ -1,8 +1,8 @@
 package ru.job4j.poly;
 
 public class Bus implements Transport {
-    String name = "Икарус";
-    double price = 45.5;
+    private String name = "Икарус";
+    private double price = 45.5;
 
     @Override
     public void drive() {
@@ -15,14 +15,12 @@ public class Bus implements Transport {
     @Override
     public void passenger(int count) {
         System.out.println("В транспортном средстве - " + name + " " + count + " - посадочных мест");
-
     }
 
     @Override
     public double costOfFuel(int amountOfFuel) {
         double sum = price * amountOfFuel;
-        System.out.println("Стоимость топлива составила - "+sum+" руб.");
-
+        System.out.println("Стоимость топлива составила - " + sum + " руб.");
         return sum;
     }
 }

@@ -6,5 +6,6 @@ public class Test {
         bus1.passenger(42);
         bus1.drive();
         bus1.costOfFuel(100);
+
     }
 }

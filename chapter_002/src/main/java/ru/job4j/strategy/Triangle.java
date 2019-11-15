@@ -1,14 +1,16 @@
 package ru.job4j.strategy;
 
+import java.util.StringJoiner;
+
 public class Triangle implements Shape {
 
     @Override
     public String draw() {
-        StringBuilder pic = new StringBuilder();
-        pic.append("   +   \n");
-        pic.append("  +++  \n");
-        pic.append(" +++++ \n");
-        pic.append("+++++++");
-        return pic.toString();
+        return  new StringJoiner(System.lineSeparator())
+        .add("   +   ")
+        .add("  +++  ")
+        .add(" +++++ ")
+        .add("+++++++")
+        .toString();
     }
 }

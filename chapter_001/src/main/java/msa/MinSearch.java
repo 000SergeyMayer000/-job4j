@@ -14,10 +14,10 @@ public class MinSearch {
     public static void main(String[] args) {
         MinSearch minSearch = new MinSearch();
         int[] arr = new int[]{12, 9, 8, 7};
-      int min = minSearch.minarray(arr);
-     System.out.println(min);
+        int min = minSearch.minarray(arr);
+        System.out.println(min);
         for (int element : arr) {
-            System.out.print(element+" ");
+            System.out.print(element + " ");
         }
     }
 }

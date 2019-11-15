@@ -13,7 +13,7 @@ class SortingArray {
      * @param args
      */
     public static void main(String[] args) {
-        int[] array = {3,2,1};
+        int[] array = {3, 2, 1};
         for (int i = 0; i < array.length; i++) {
             for (int j = 0 + i; j < array.length; j++) {
                 if (array[i] > array[j]) {
@@ -24,7 +24,6 @@ class SortingArray {
             }
         }
         System.out.println(Arrays.toString(array));
-        MinSearch minSearch=new MinSearch();
-      //  System.out.println("Минимальное значение ="+minSearch.minarray(array));
+        MinSearch minSearch = new MinSearch();
     }
 }

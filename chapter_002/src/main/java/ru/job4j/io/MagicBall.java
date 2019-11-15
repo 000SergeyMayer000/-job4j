@@ -19,12 +19,5 @@ public class MagicBall {
             default:
                 System.out.println("Может быть");
         }
-//        if (answer == 0) {
-//            System.out.println("Да");
-//        } else if (answer == 1) {
-//            System.out.println("Нет");
-//        } else {
-//            System.out.println("Может быть");
-//        }
     }
 }

@@ -9,7 +9,7 @@ public class Box {
     double depth;
 
     //сконструировать клон обьекта
-    Box(Box ob) {// предать объект конструктору
+    Box(Box ob) { // предать объект конструктору
         width = ob.width;
         heigth = ob.heigth;
         depth = ob.depth;
@@ -25,13 +25,15 @@ public class Box {
     //конструктор применяемы в утсутсвии размеров
     Box() {
         width = -1; // значение -1 служит для оозначения
-        heigth = -1;//неицеализирванного паралелипипеда
+        heigth = -1; //неицеализирванного паралелипипеда
         depth = -1;
     }
 
     //конструкор применяемы для создания куба
     Box(double len) {
-        width = heigth = depth = len;
+        depth = len;
+        heigth = depth;
+        width = heigth;
     }
 
     //расчитать и возвратить объем
@@ -40,30 +42,32 @@ public class Box {
     }
 
 }
-    //расширить класс Box, включив в него поле вес
-    class BoxWeight extends Box {
-        double weight; //вес паралеллипипеда
+
+//расширить класс Box, включив в него поле вес
+class BoxWeight extends Box {
+    double weight; //вес паралеллипипеда
 
     //консруктор BoxWeight()
-    BoxWeight(double w, double h, double d, double m){
-    width=w;
-    heigth=h;
-    depth=d;
-    weight=m;
+    BoxWeight(double w, double h, double d, double m) {
+        width = w;
+        heigth = h;
+        depth = d;
+        weight = m;
     }
 }
+
 class DevoBoxWeight {
     public static void main(String[] args) {
-        BoxWeight mybox1=new BoxWeight(10,20,15,34.3);
-        BoxWeight mybox2=new BoxWeight(2,3,4,0.076);
+        BoxWeight mybox1 = new BoxWeight(10, 20, 15, 34.3);
+        BoxWeight mybox2 = new BoxWeight(2, 3, 4, 0.076);
 
         double vol;
-        vol=mybox1.volume();
-        System.out.println("Объем mybox1="+vol);
-        System.out.println("Вес mybox1 ="+mybox1.weight);
+        vol = mybox1.volume();
+        System.out.println("Объем mybox1=" + vol);
+        System.out.println("Вес mybox1 =" + mybox1.weight);
 
-        vol= mybox2.volume();
-        System.out.println("объем mybox2="+vol);
-        System.out.println("Вес mybox2="+mybox2.weight);
+        vol = mybox2.volume();
+        System.out.println("объем mybox2=" + vol);
+        System.out.println("Вес mybox2=" + mybox2.weight);
     }
 }
