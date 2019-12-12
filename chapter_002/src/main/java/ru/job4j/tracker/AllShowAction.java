@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 /**
  * класс AllShowAction реализует интерфейс UserAction
  * @autor SergeyMayer
@@ -24,7 +26,7 @@ public class AllShowAction implements UserAction {
      */
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        Item[] allitems = tracker.findAll();
+        List<Item> allitems = tracker.findAll();
         for (Item item : allitems) {
             System.out.println("Заявка с именем " + item.getName());
             System.out.println("ID заявки: " + item.getId());

@@ -7,7 +7,7 @@ import java.util.*;
  */
 
 public class Tracker {
-    public Item[] items = new Item[100];
+    public List <Item> items = new ArrayList<>();
     public int position = 0;
     private static final Random RN = new Random();
 
@@ -18,7 +18,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(generateId());
-        this.items[position++] = item;
+        this.items.add(position++, item);
         return item;
     }
 
@@ -31,8 +31,9 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         boolean result = false;
         for (int i = 0; i < position; i++) {
-            if (items[i].getId().equals(id)) {
-                this.items[i] = item;
+            //  if (items[i].getId().equals(id)) {
+            if (items.get(i).getId().equals(id)) {
+                this.items.add(i, item);
                 result = true;
                 item.setId(id);
                 break;
@@ -44,9 +45,11 @@ public class Tracker {
     public boolean delete(String id) {
         boolean result = false;
         for (int i = 0; i < position; i++) {
-            Item item = items[i];
+            Item item = items.get(i);
+
             if (item != null && item.getId().equals(id)) {
-                System.arraycopy(items, i + 1, items, i, items.length - i - 1);
+                items.remove(item);
+//                System.arraycopy(items, i + 1, items, i, items.size() - i - 1);
                 result = true;
                 position--;
                 break;
@@ -55,28 +58,27 @@ public class Tracker {
         return result;
     }
 
-    public Item[] findAll() {
-        return Arrays.copyOf(this.items, this.position);
+    public List<Item> findAll() {
+        return items;
     }
 
-    public Item[] findByName(String key) {
-        Item[] result = new Item[this.position];
+    public List<Item> findByName(String key) {
+        List <Item> result = new ArrayList<>();
         int number = 0;
         for (int i = 0; i < position; i++) {
-            Item item = items[i];
+            Item item = items.get(i);
             if (item.getName().equals(key)) {
-                result[number] = item;
+                result.add(number, item);
                 number++;
             }
         }
-        return Arrays.copyOf(result, number);
+        return result;
     }
 
     public Item findById(String id) {
         Item result = null;
-        for (int i = 0; i < position; i++) {
-            Item item = items[i];
-            if (item.getId().equals(id)) {
+        for (Item item: items) {
+             if (item.getId().equals(id)) {
                 result = item;
                 break;
             }
