@@ -6,14 +6,9 @@ import java.util.Objects;
 public class Item {
     private String id;
     private String name;
-    private String decs;
-    private long time;
-    private static final Random RN = new Random();
 
-    public Item(String name, String decs, long time) {
+    public Item(String name, String decs) {
         this.name = name;
-        this.decs = decs;
-        this.time = time;
     }
 
     public String getId() {
@@ -32,22 +27,6 @@ public class Item {
         this.name = name;
     }
 
-    public String getDecs() {
-        return this.decs;
-    }
-
-    public void setDecs(String decs) {
-        this.decs = decs;
-    }
-
-    public long getTime() {
-        return this.time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -57,15 +36,12 @@ public class Item {
             return false;
         }
         Item item = (Item) o;
-        return time == item.time
-                && Objects.equals(id, item.id)
-                && Objects.equals(name, item.name)
-                && Objects.equals(decs, item.decs);
+        return Objects.equals(id, item.id) && Objects.equals(name, item.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, decs, time);
+        return Objects.hash(id, name);
     }
 }
 

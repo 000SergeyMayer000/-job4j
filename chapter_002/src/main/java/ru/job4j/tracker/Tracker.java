@@ -7,78 +7,67 @@ import java.util.*;
  */
 
 public class Tracker {
-    public List<Item> items = new ArrayList<>();
+    private Item[] items = new Item[100];
     public int position = 0;
-    private static final Random RN = new Random();
 
     /**
      * метод add добовляет заявку
+     *
      * @param item - заявка
      * @return - заявка
      */
     public Item add(Item item) {
-        item.setId(generateId());
-        this.items.add(position++, item);
+        item.setId(this.generateId());
+        this.items[this.position] = item;
         return item;
     }
 
     /**
-     * метод
-     * @param id
-     * @param item
+     * метод обеспечивает вывод всех заявок
      * @return
      */
-    public boolean replace(String id, Item item) {
-        boolean result = false;
-        for (int i = 0; i < position; i++) {
-            //  if (items[i].getId().equals(id)) {
-            if (items.get(i).getId().equals(id)) {
-                this.items.add(i, item);
-                result = true;
-                item.setId(id);
-                break;
+
+    public Item[] findAll() {
+        Item[] result = new Item[position];
+        int sizeCopyArray = 0;
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] != null) {
+                result[i] = items[i];
+                sizeCopyArray++;
             }
         }
-        return result;
+        return Arrays.copyOf(result, sizeCopyArray);
     }
 
-    public boolean delete(String id) {
-        boolean result = false;
-        for (int i = 0; i < position; i++) {
-            Item item = items.get(i);
+    /**
+     * поиск заявок по имени
+     * @param key - ключ поиска
+     * @return - возвращает массив найденых заявок
+     */
 
-            if (item != null && item.getId().equals(id)) {
-                items.remove(item);
-//                System.arraycopy(items, i + 1, items, i, items.size() - i - 1);
-                result = true;
-                position--;
-                break;
-            }
-        }
-        return result;
-    }
-
-    public List<Item> findAll() {
-        return items;
-    }
-
-    public List<Item> findByName(String key) {
-        List<Item> result = new ArrayList<>();
-        int number = 0;
-        for (int i = 0; i < position; i++) {
-            Item item = items.get(i);
+    public Item[] findByName(String key) {
+        Item[] result = new Item[position];
+        int sizeCopyArray = 0;
+        for (int i = 0; i < items.length; i++) {
+            Item item = items[i];
             if (item.getName().equals(key)) {
-                result.add(number, item);
-                number++;
+                result[i] = item;
+                sizeCopyArray++;
             }
         }
-        return result;
+        return Arrays.copyOf(result, sizeCopyArray);
     }
+
+    /**
+     поиск заявок по имени
+     * @param id - ID искомой заявки
+     * @return - возвращает массив найденых заявок
+     */
 
     public Item findById(String id) {
         Item result = null;
-        for (Item item: items) {
-             if (item.getId().equals(id)) {
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
                 result = item;
                 break;
             }
@@ -86,8 +75,13 @@ public class Tracker {
         return result;
     }
 
+    /**
+     * метод генерирует ID
+     * @return
+     */
+
     public String generateId() {
-        return String.valueOf(System.currentTimeMillis() + RN.nextInt());
+        Random rm = new Random();
+        return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
 }
-
