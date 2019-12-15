@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -9,31 +10,20 @@ public class TrackerTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
-        long created = System.currentTimeMillis();
-        Item item = new Item("test1", "testDescription", created);
+        Item item = new Item("test1");
         tracker.add(item);
         Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
     }
 
     @Test
-    public void whenReplaceNameThenReturnNewName() {
+    public void whenReplace() {
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1", "testDescription", 123L);
-        tracker.add(previous);
-        Item next = new Item("test2", "testDescription2", 1234L);
-        next.setId(previous.getId());
-        tracker.replace(previous.getId(), next);
-        assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
-    }
-
-    @Test
-    public void whenDeleteItem() {
-        Tracker tracker = new Tracker();
-        Item item1 = new Item("name1", "decs1", 54321L);
-        tracker.add(item1);
-        int counter = tracker.position;
-        tracker.delete(item1.getId());
-        assertThat(tracker.position, is(counter - 1));
+        Item bug = new Item("Bug");
+        tracker.add(bug);
+        String id = bug.getId();
+        Item bugWithDesc = new Item("Bug with description");
+        tracker.replace(id, bugWithDesc);
+        assertThat(tracker.findById(id).getName(), is("Bug with description"));
     }
 }

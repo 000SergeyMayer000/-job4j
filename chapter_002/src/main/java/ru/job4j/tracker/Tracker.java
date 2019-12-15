@@ -18,12 +18,13 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position] = item;
+        this.items[this.position++] = item;
         return item;
     }
 
     /**
      * метод обеспечивает вывод всех заявок
+     *
      * @return
      */
 
@@ -41,6 +42,7 @@ public class Tracker {
 
     /**
      * поиск заявок по имени
+     *
      * @param key - ключ поиска
      * @return - возвращает массив найденых заявок
      */
@@ -59,29 +61,55 @@ public class Tracker {
     }
 
     /**
-     поиск заявок по имени
+     * поиск заявок по имени
+     *
      * @param id - ID искомой заявки
      * @return - возвращает массив найденых заявок
      */
 
     public Item findById(String id) {
-        Item result = null;
-        for (Item item : items) {
-            if (item.getId().equals(id)) {
-                result = item;
-                break;
-            }
-        }
-        return result;
+        return items[indexOf(id)];
     }
 
     /**
      * метод генерирует ID
+     *
      * @return
      */
 
     public String generateId() {
         Random rm = new Random();
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
+    }
+
+    /**
+     * метод возвращает индекс заявки по его ID
+     * @param id - ID искомой заявки
+     * @return - индекс искомой заявки
+     */
+
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int i = 0; i < position; i++) {
+            if (items[i].getId().equals(id)) {
+                rsl = i;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    /**
+     * метод производит замену заявки(ID сохраняется)
+     * @param id - ID заявки , которую необходимо заменить
+     * @param item - новая заявка для замены
+     * @return - замененная заявка
+     */
+
+    public Item replace(String id, Item item){
+        int index = indexOf(id);
+        item.setId(items[index].getId());
+        items[index] = item;
+        return item;
     }
 }
