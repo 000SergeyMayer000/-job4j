@@ -6,18 +6,13 @@ public class Wrapper {
         Integer y = 111;
         x = y; // автораспаковка
         y = x * 123; // автоупаковка
-
-
-        Integer a = new Integer(0);
-        Integer b = new Integer(0);
-        System.out.println(a);
-        System.out.println(b);
-        b = a;
-        a = 1;
-        System.out.println(a);
-        System.out.println(b);
-
+//        Integer a = new Integer(0);
+//        Integer b = new Integer(0);
+//        System.out.println(a);
+//        System.out.println(b);
+//        b = a;
+//        a = 1;
+//        System.out.println(a);
+//        System.out.println(b);
     }
-
-
 }

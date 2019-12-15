@@ -7,7 +7,7 @@ import java.util.*;
  */
 
 public class Tracker {
-    public List <Item> items = new ArrayList<>();
+    public List<Item> items = new ArrayList<>();
     public int position = 0;
     private static final Random RN = new Random();
 
@@ -63,7 +63,7 @@ public class Tracker {
     }
 
     public List<Item> findByName(String key) {
-        List <Item> result = new ArrayList<>();
+        List<Item> result = new ArrayList<>();
         int number = 0;
         for (int i = 0; i < position; i++) {
             Item item = items.get(i);
