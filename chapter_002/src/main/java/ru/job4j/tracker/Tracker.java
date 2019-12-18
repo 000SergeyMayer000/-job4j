@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 
 import java.util.*;
+import java.util.Arrays;
+
 
 /**
  * класс Tracker является хранилищем заявок и содержит методы и поля, необходимые для работы с заявками
@@ -84,6 +86,7 @@ public class Tracker {
 
     /**
      * метод возвращает индекс заявки по его ID
+     *
      * @param id - ID искомой заявки
      * @return - индекс искомой заявки
      */
@@ -101,15 +104,22 @@ public class Tracker {
 
     /**
      * метод производит замену заявки(ID сохраняется)
-     * @param id - ID заявки , которую необходимо заменить
+     *
+     * @param id   - ID заявки , которую необходимо заменить
      * @param item - новая заявка для замены
      * @return - замененная заявка
      */
 
-    public Item replace(String id, Item item){
+    public Item replace(String id, Item item) {
         int index = indexOf(id);
         item.setId(items[index].getId());
         items[index] = item;
         return item;
+    }
+
+    public void delete(String id) {
+        System.arraycopy(items, (indexOf(id) + 1), items, indexOf(id), (position - indexOf(id) - 1));
+        items[position] = null;
+        position--;
     }
 }
