@@ -1,125 +1,92 @@
 package ru.job4j.tracker;
 
 import java.util.*;
-import java.util.Arrays;
-
 
 /**
  * класс Tracker является хранилищем заявок и содержит методы и поля, необходимые для работы с заявками
  */
 
 public class Tracker {
-    private Item[] items = new Item[100];
+    public List <Item> items = new ArrayList<>();
     public int position = 0;
+    private static final Random RN = new Random();
 
     /**
      * метод add добовляет заявку
-     *
      * @param item - заявка
      * @return - заявка
      */
     public Item add(Item item) {
-        item.setId(this.generateId());
-        this.items[this.position++] = item;
+        item.setId(generateId());
+        this.items.add(position++, item);
         return item;
     }
 
     /**
-     * метод обеспечивает вывод всех заявок
-     *
+     * метод
+     * @param id
+     * @param item
      * @return
      */
-
-    public Item[] findAll() {
-        Item[] result = new Item[position];
-        int sizeCopyArray = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null) {
-                result[i] = items[i];
-                sizeCopyArray++;
-            }
-        }
-        return Arrays.copyOf(result, sizeCopyArray);
-    }
-
-    /**
-     * поиск заявок по имени
-     *
-     * @param key - ключ поиска
-     * @return - возвращает массив найденых заявок
-     */
-
-    public Item[] findByName(String key) {
-        Item[] result = new Item[position];
-        int sizeCopyArray = 0;
-        for (int i = 0; i < items.length; i++) {
-            Item item = items[i];
-            if (item.getName().equals(key)) {
-                result[i] = item;
-                sizeCopyArray++;
-            }
-        }
-        return Arrays.copyOf(result, sizeCopyArray);
-    }
-
-    /**
-     * поиск заявок по имени
-     *
-     * @param id - ID искомой заявки
-     * @return - возвращает массив найденых заявок
-     */
-
-    public Item findById(String id) {
-        return items[indexOf(id)];
-    }
-
-    /**
-     * метод генерирует ID
-     *
-     * @return
-     */
-
-    public String generateId() {
-        Random rm = new Random();
-        return String.valueOf(rm.nextLong() + System.currentTimeMillis());
-    }
-
-    /**
-     * метод возвращает индекс заявки по его ID
-     *
-     * @param id - ID искомой заявки
-     * @return - индекс искомой заявки
-     */
-
-    private int indexOf(String id) {
-        int rsl = -1;
+    public boolean replace(String id, Item item) {
+        boolean result = false;
         for (int i = 0; i < position; i++) {
-            if (items[i].getId().equals(id)) {
-                rsl = i;
+            //  if (items[i].getId().equals(id)) {
+            if (items.get(i).getId().equals(id)) {
+                this.items.add(i, item);
+                result = true;
+                item.setId(id);
                 break;
             }
         }
-        return rsl;
+        return result;
     }
 
-    /**
-     * метод производит замену заявки(ID сохраняется)
-     *
-     * @param id   - ID заявки , которую необходимо заменить
-     * @param item - новая заявка для замены
-     * @return - замененная заявка
-     */
+    public boolean delete(String id) {
+        boolean result = false;
+        for (int i = 0; i < position; i++) {
+            Item item = items.get(i);
 
-    public Item replace(String id, Item item) {
-        int index = indexOf(id);
-        item.setId(items[index].getId());
-        items[index] = item;
-        return item;
+            if (item != null && item.getId().equals(id)) {
+                items.remove(item);
+//                System.arraycopy(items, i + 1, items, i, items.size() - i - 1);
+                result = true;
+                position--;
+                break;
+            }
+        }
+        return result;
     }
 
-    public void delete(String id) {
-        System.arraycopy(items, (indexOf(id) + 1), items, indexOf(id), (position - indexOf(id) - 1));
-        items[position] = null;
-        position--;
+    public List<Item> findAll() {
+        return items;
+    }
+
+    public List<Item> findByName(String key) {
+        List <Item> result = new ArrayList<>();
+        int number = 0;
+        for (int i = 0; i < position; i++) {
+            Item item = items.get(i);
+            if (item.getName().equals(key)) {
+                result.add(number, item);
+                number++;
+            }
+        }
+        return result;
+    }
+
+    public Item findById(String id) {
+        Item result = null;
+        for (Item item: items) {
+            if (item.getId().equals(id)) {
+                result = item;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public String generateId() {
+        return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
 }
