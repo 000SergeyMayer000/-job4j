@@ -7,12 +7,13 @@ import java.util.*;
  */
 
 public class Tracker {
-    public List <Item> items = new ArrayList<>();
+    public List<Item> items = new ArrayList<>();
     public int position = 0;
     private static final Random RN = new Random();
 
     /**
      * метод add добовляет заявку
+     *
      * @param item - заявка
      * @return - заявка
      */
@@ -24,6 +25,7 @@ public class Tracker {
 
     /**
      * метод
+     *
      * @param id
      * @param item
      * @return
@@ -63,7 +65,7 @@ public class Tracker {
     }
 
     public List<Item> findByName(String key) {
-        List <Item> result = new ArrayList<>();
+        List<Item> result = new ArrayList<>();
         int number = 0;
         for (int i = 0; i < position; i++) {
             Item item = items.get(i);
@@ -77,7 +79,7 @@ public class Tracker {
 
     public Item findById(String id) {
         Item result = null;
-        for (Item item: items) {
+        for (Item item : items) {
             if (item.getId().equals(id)) {
                 result = item;
                 break;

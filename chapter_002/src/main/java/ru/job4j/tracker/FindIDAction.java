@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class FindIDAction implements  UserAction {
+public class FindIDAction implements UserAction {
     @Override
     public String name() {
         return "==Поиск заявки по ID=====";
