@@ -45,19 +45,12 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(@NotNull User o) {
-        if (CharSequence.compare(this.name, o.getName()) > 0) {
-            return 1;
-        } else if (CharSequence.compare(this.name, o.getName()) < 0) {
-            return -1;
-        } else {
-            if (Integer.compare(this.age, o.age) > 0) {
-                return 1;
-            } else if (Integer.compare(this.age, o.age) < 0) {
-                return -1;
-            } else {
-                return 0;
-            }
+        int rsl = this.name.compareTo(o.name);
+        if (rsl == 0) {
+            rsl = Integer.compare(this.age, o.age);
         }
+        return rsl;
+
     }
 }
 
