@@ -50,7 +50,6 @@ public class User implements Comparable<User> {
             rsl = Integer.compare(this.age, o.age);
         }
         return rsl;
-
     }
 }
 
