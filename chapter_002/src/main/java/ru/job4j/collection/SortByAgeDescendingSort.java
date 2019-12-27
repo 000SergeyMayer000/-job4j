@@ -2,10 +2,11 @@ package ru.job4j.collection;
 
 import java.util.Comparator;
 
-public class SortByAgeAscending implements Comparator<User> {
+public class SortByAgeDescendingSort implements Comparator<User> {
 
     @Override
     public int compare(User o1, User o2) {
-        return Integer.compare(o1.getAge(), o2.getAge());
+        return Integer.compare(o2.getAge(), o1.getAge());
     }
 }
+
