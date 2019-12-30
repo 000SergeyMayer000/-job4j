@@ -34,7 +34,7 @@ public class StringCompare implements Comparator<String> {
         if (rsl == 0) {
             if (leftList.size() > rightList.size()) {
                 rsl = 1;
-            }  else if (leftList.size() < rightList.size()){
+            } else if (leftList.size() < rightList.size()) {
                 rsl = -1;
             }
         }
