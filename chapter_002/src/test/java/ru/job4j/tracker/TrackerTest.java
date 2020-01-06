@@ -36,6 +36,6 @@ public class TrackerTest {
         tracker.add(bug);
         String id = bug.getId();
         tracker.delete(id);
-        assertThat(tracker.findById(id), is(tracker.findByName("Bug")));
+        assertThat(tracker.findById(id), is(nullValue()));
     }
 }

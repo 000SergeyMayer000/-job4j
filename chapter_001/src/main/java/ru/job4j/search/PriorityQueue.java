@@ -13,7 +13,7 @@ public class PriorityQueue {
     public void put(Task task) {
         int counter = 0;
         for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getPriority() > task.getPriority()) {
+            if (tasks.get(i).getPriority() < task.getPriority()) {
                 counter = i + 1;
             }
         }

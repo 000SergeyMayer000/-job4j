@@ -33,7 +33,6 @@ public class Tracker {
     public boolean replace(String id, Item item) {
         boolean result = false;
         for (int i = 0; i < position; i++) {
-            //  if (items[i].getId().equals(id)) {
             if (items.get(i).getId().equals(id)) {
                 this.items.add(i, item);
                 result = true;
@@ -51,7 +50,6 @@ public class Tracker {
 
             if (item != null && item.getId().equals(id)) {
                 items.remove(item);
-//                System.arraycopy(items, i + 1, items, i, items.size() - i - 1);
                 result = true;
                 position--;
                 break;

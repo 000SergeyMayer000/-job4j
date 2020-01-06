@@ -16,6 +16,10 @@ public class Item {
         this.time = time;
     }
 
+    public Item(String name) {
+        this.name = name;
+    }
+
     public String getId() {
         return this.id;
     }
