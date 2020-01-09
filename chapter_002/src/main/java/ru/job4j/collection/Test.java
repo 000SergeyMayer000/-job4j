@@ -14,8 +14,8 @@ public class Test {
 //        for (int i = 0; i < a; i++) {
 //            rslInteger = Integer.compare((str1.charAt(i)), (str2.charAt(i)));
 //---------------------------------------------------------------------------------
-            //
-            //  int rslCharacter = Character.compare((str1.charAt(i)), (str2.charAt(i)));
+        //
+        //  int rslCharacter = Character.compare((str1.charAt(i)), (str2.charAt(i)));
 //        List<User> users = Arrays.asList(
 //                new User("Ivan", 21),
 //                new User("Anton", 21),
@@ -34,10 +34,14 @@ public class Test {
 //        System.out.println(users); // сортировка Name по УБЫВАНИЮ
 //        Collections.sort(users, new SortByAgeAscendingSort().thenComparing(new SortByNameDescendingSort())); // комбинированный компаратор
 //        System.out.println(users);
+        Character one = str1.charAt(0);
+        Character two = str1.charAt(2);
+        System.out.println(Character.compare('a', 'z'));
+        System.out.println(Integer.compare('z','a'));
+        System.out.println(Integer.compare(1, 26));
 
 
-        }
-      //  System.out.println(rslInteger);
     }
+}
 
 
