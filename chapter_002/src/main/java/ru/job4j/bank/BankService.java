@@ -19,24 +19,22 @@ public class BankService {
     }
 
     public void addAccount(String passport, Account account) {
-        BankService bank = new BankService();
-        User user = bank.findByPassport(passport);
+        User user = findByPassport(passport);
         List<Account> accounts = users.get(user);
-//        int index = accounts.indexOf(account);
-//        if (index >= 0) {
-//            System.out.println("Such an account exists");
-//
-//        } else {
-        accounts.add(account);
+        int index = accounts.indexOf(account);
+        if (index >= 0) {
+            System.out.println("Such an account exists");
+
+        } else {
+            accounts.add(account);
+        }
     }
-//    }
 
     public User findByPassport(String passport) {
-        BankService bank = new BankService();
-        User rsl = null;
-        for (Map.Entry<User, List<Account>> userListEntry : bank.users.entrySet()) {
-            if (userListEntry.getKey().getPassport().equals(passport)) {
-                rsl = userListEntry.getKey();
+          User rsl = null;
+        for (User user : users.keySet()) {
+            if (user.getPassport().equals(passport)) {
+                rsl = user;
                 break;
             } else {
                 System.out.println("There is no such client");
@@ -46,14 +44,13 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        BankService bank = new BankService();
-        User user = bank.findByPassport(passport);
-        List<Account> accounts = bank.users.get(user);
+        User user = findByPassport(passport);
+        List<Account> accounts = users.get(user);
         Account rsl = null;
         for (Account account : accounts) {
-      String req = account.getRequisite();
+            String req = account.getRequisite();
             if (req.equals(requisite)) {
-                 rsl = account;
+                rsl = account;
                 break;
             }
         }
@@ -65,6 +62,8 @@ public class BankService {
         boolean rsl = false;
         return rsl;
     }
+
+
 
     public static void main(String[] args) {
 
@@ -80,15 +79,15 @@ public class BankService {
         accounts.add(account2);
         System.out.println(accounts.size());
         map1.put(user, accounts);
-        System.out.println("00user " + bank.findByPassport("3434"));
+        System.out.println("00user " + bank.findByPassport("3434")); //00user User{passport='3434', username='Petr Arsentev'}
         boolean value = false;
         List<Account> list = map1.get(user);
         for (Account account : list) {
             System.out.println(account);
             System.out.println(account.getRequisite());
             value = account.getRequisite().equals("2345");
-                    }
-        System.out.println(value);
-        System.out.println(bank.findByRequisite("3434", "2345"));
+        }
+        System.out.println(value); //true
+        System.out.println(bank.findByRequisite("3434", "2345")); //null
     }
 }
