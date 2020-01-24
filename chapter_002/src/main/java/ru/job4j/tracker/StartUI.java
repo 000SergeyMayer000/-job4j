@@ -34,4 +34,5 @@ public class StartUI {
         };
         new StartUI().init(validate, tracker, actions);
     }
+
 }
