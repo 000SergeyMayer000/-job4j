@@ -10,13 +10,10 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-
         if (users.containsKey(user)) {
-            System.out.println("Such a client exists");
-        } else {
-            List<Account> accounts = new ArrayList<>();
-            users.put(user, accounts);
+            throw new IllegalStateException("User already exists");
         }
+        users.put(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
@@ -24,11 +21,9 @@ public class BankService {
         List<Account> accounts = users.get(user);
         int index = accounts.indexOf(account);
         if (index >= 0) {
-            System.out.println("Such an account exists");
-
-        } else {
-            accounts.add(account);
+            throw new IllegalStateException("User already exists");
         }
+        accounts.add(account);
     }
 
     public User findByPassport(String passport) {
