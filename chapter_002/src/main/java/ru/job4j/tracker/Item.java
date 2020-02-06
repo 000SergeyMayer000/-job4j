@@ -68,6 +68,13 @@ public class Item {
     }
 
     @Override
+    public String toString() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(id, name, decs, time);
     }
