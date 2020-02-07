@@ -14,20 +14,13 @@ public class PassportOffice {
      */
 
     public boolean add(Citizen citizen) {
-
-        return citizens.put(citizen.getPassport(), citizen) == null; //метод put возращает предыдущее значение,
-        // связанное с ключом , или ноль, если не было сопоставления для ключа .
-        // ( Нулевой возврат также может указывать, что карта ранее ассоциировала нуль с ключом .)
-
+        boolean rsl = true;
+        if (!citizens.containsKey(citizen.getPassport())) {
+            citizens.put(citizen.getPassport(), citizen);
+            rsl = false;
+        }
+        return rsl;
     }
-//    public boolean add(Citizen citizen) {
-//        boolean rsl = true;
-//        if (!citizens.containsKey(citizen.getPassport())) {
-//            citizens.put(citizen.getPassport(), citizen);
-//            rsl = false;
-//        }
-//        return rsl;
-//    }
 
     public Citizen get(String passport) {
         return citizens.get(passport);
